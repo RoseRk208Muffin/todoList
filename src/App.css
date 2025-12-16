@@ -1,41 +1,51 @@
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 20px;
+  margin: 0;
 }
 
+/* App Container */
 .app {
   background-color: white;
-  padding: 30px;
+  padding: 25px 20px;
   border-radius: 10px;
-  width: 400px;
+  width: 100%;
+  max-width: 450px; /* Scales on larger screens */
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
+/* Title */
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
+/* Input Boxes */
 .input-box, .search-box {
   display: flex;
+  flex-wrap: wrap; /* allows wrapping on small screens */
   margin-bottom: 15px;
 }
 
 .input-box input,
 .search-box input {
-  flex: 1;
+  flex: 1 1 100%; /* Full width on mobile */
   padding: 10px;
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* spacing on mobile */
 }
 
 .input-box button {
   padding: 10px 15px;
-  margin-left: 10px;
   font-size: 16px;
   border: none;
   background-color: #007bff;
@@ -43,12 +53,14 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s;
+  flex: 1 1 auto; /* scales with input */
 }
 
 .input-box button:hover {
   background-color: #0056b3;
 }
 
+/* Todo List */
 .todo-list {
   list-style: none;
   padding: 0;
@@ -59,6 +71,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap; /* wrap items on small screens */
   padding: 8px 0;
   border-bottom: 1px solid #eee;
 }
@@ -66,7 +79,9 @@ h1 {
 .todo-label {
   display: flex;
   align-items: center;
+  flex: 1 1 70%; /* label takes most of the width */
   cursor: pointer;
+  word-break: break-word; /* prevent overflow */
 }
 
 .todo-label input {
@@ -79,6 +94,7 @@ h1 {
   color: #888;
 }
 
+/* Delete Button */
 .delete-btn {
   background: none;
   border: none;
@@ -86,8 +102,35 @@ h1 {
   font-size: 18px;
   color: #ff4d4d;
   transition: transform 0.1s;
+  flex: 1 1 auto;
+  text-align: right;
+  min-width: 40px;
 }
 
 .delete-btn:hover {
   transform: scale(1.2);
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .input-box button {
+    margin-left: 0;
+  }
+
+  .todo-item {
+    justify-content: flex-start;
+  }
+
+  .delete-btn {
+    text-align: left;
+    margin-top: 5px;
+  }
 }
